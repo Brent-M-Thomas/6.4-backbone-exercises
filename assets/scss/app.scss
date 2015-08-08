@@ -3,3 +3,15 @@
 @import 'bourbon';
 @import 'neat';
 @import 'border-box';
+
+.target {
+    @include outer-container(12);
+    background: #ACC8F8;
+    width: 100%;
+}
+
+.form {
+    @include span-columns(10);
+    @include shift(1);
+}
+
