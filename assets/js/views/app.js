@@ -13,15 +13,13 @@ var AppView = Backbone.View.extend({
   },
 
   render: function() {
-    var html = this.template(this.model.toJSON());
+    var html = this.template(this.model.toJSON);
     this.$el.html(html);
     return this;
   },
 
   newForm: function() {
-    var title = this.$el.find('input').val();
-    this.collection.create({title: title});
-    this.$el.find('input').val('');
+
   }
 
 });
