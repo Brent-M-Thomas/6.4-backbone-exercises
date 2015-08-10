@@ -4,12 +4,12 @@ var AppView = Backbone.View.extend({
   el: '#target',
 
   initialize: function() {
-    this.listenTo(this.collection, 'add change sync', this.render);
+    this.listenTo(this.model, 'add change sync submit', this.render);
     this.render();
   },
 
   events: {
-    'submit form': 'newForm'
+    'submit form': 'newForm',
   },
 
   render: function() {
@@ -18,7 +18,8 @@ var AppView = Backbone.View.extend({
     return this;
   },
 
-  newForm: function() {
+  newForm: function(ev) {
+    ev.preventDefault();
     var firstName = this.$('.first-name').val();
     var lastName = this.$('.last-name').val();
     var address = this.$('.address').val();
@@ -33,6 +34,6 @@ var AppView = Backbone.View.extend({
 
     this.model = new FormDataModel();
 
-  }
+  },
 
 });

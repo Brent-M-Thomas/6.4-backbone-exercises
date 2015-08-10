@@ -4,13 +4,12 @@ var FormDataModel = Backbone.Model.extend({
     firstName: '',
     lastName: '',
     address: '',
-    phoneNumber: ''
+    phoneNumber: '',
   },
-  urlRoot: 'http://tiny-lr.herokuapp.com/collections/bt-form'
+  urlRoot: 'http://tiny-lr.herokuapp.com/collections/bt-form',
 
 });
 
 var FormDataColl = Backbone.Collection.extend({
   model: FormDataModel,
-  url: 'http://tiny-lr.herokuapp.com/collections/bt-form'
 });

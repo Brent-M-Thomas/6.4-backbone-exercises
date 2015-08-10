@@ -1,2 +1,2 @@
-var form = new FormDataColl();
-var app = new AppView({collection: form});
+// var form = new FormDataModel();
+var form = new AppView({model: new FormDataModel()});
