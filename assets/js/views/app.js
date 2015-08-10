@@ -1,5 +1,5 @@
 var AppView = Backbone.View.extend({
-  template: AppTemplates.app,
+  template: AppTemplates.form,
 
   el: '#target',
 
