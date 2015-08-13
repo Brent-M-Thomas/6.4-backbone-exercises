@@ -3,3 +3,49 @@
 @import 'bourbon';
 @import 'neat';
 @import 'border-box';
+$theme-color1: #30579C;
+$theme-color2: #1F4831;
+$theme-color3: #457880;
+$theme-color4: #FEFDF9;
+//change target heights to 100% after I have content filling them
+
+body {
+    background-color: $theme-color1;
+    color: $theme-color4;
+}
+.title {
+    text-align: center;
+    font-size: 4rem;
+    font-family: monospace;
+    font-weight: 600;
+}
+#list-target {
+    background-color: $theme-color2;
+    width: 20%;
+    height: 30rem;
+    display: block;
+    float: left;
+}
+
+a {
+    color: $theme-color4;
+    text-decoration: none;
+    font-family: comic sans ms;
+    font-weight: 200;
+}
+
+li {
+    margin: .5rem .5rem;
+    background: $theme-color3;
+    border: 4px solid $theme-color1;
+    border-radius: 1rem;
+    padding: .3rem .3rem .3rem 1rem;
+}
+
+#post-target {
+    background-color: $theme-color3;
+    width: 80%;
+    height: 30rem;
+    display: block;
+    float: right;
+}

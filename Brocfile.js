@@ -22,8 +22,9 @@ var appJs = concat(assetsWithTemplates, {
   inputFiles: [
     'js/setup.js',
     'templates/**/*.js',
-    'js/views.js',
     'js/mc-constructors.js',
+    'js/views.js',
+    'js/router.js',
     'js/new.js',
     /* Your app files here */
   ],
