@@ -1,12 +1,18 @@
 var PostView = Backbone.View.extend({
-  tagName: '#post-target',
+  template: AppTemplates.post,
 
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
   },
 
   render: function() {
-    var html = this.template(this.model.toJSON());
+    var data = this.model || {};
+    if (this.model) {
+      data = this.model.toJSON();
+    }
+
+    var html = this.template(data);
+
     this.$el.html(html);
     return this;
   },

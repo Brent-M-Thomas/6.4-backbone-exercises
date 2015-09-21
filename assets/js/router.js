@@ -15,17 +15,15 @@ var DataRouter = Backbone.Router.extend({
   },
 
   show: function(id) {
+    var _this = this;
+    var tempPost = function() {
+      var post = _this.collection.get(id);
+      _this.postView = new PostView({ model: post});
+      $('#post-target').html(_this.postView.render().el);
+    };
 
-    // var _this = this;
-    // var showDetail = function() {
-      // Maybe not loaded yet
-      var model = this.collection.get(id);
-
-      console.log(model);
-
-    // };
-
-    show();
-    this.listenTo(this.collection, 'sync', showDetail);
+    tempPost();
+    this.listenTo(this.collection, 'sync', tempPost);
   },
+
 });

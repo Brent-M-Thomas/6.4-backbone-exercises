@@ -18,6 +18,7 @@ body {
     font-size: 4rem;
     font-family: monospace;
     font-weight: 600;
+    padding-bottom: 1rem;
 }
 #list-target {
     background-color: $theme-color2;
@@ -48,4 +49,8 @@ li {
     height: 30rem;
     display: block;
     float: right;
+    div {
+        margin: 1rem;
+        font-size: 1.5rem;
+    }
 }
