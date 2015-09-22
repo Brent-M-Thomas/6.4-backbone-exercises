@@ -1,0 +1,11 @@
+<ul>
+        {{#each this as |bookmark|}}
+            <li>
+                <a href="{{bookmark.url}}">
+                    <p>{{bookmark.title}}</p>
+                    <p>{{bookmark.url}}</p>
+                    <p>{{bookmark.tag}}</p>
+                </a>
+            </li>
+        {{/each}}
+    </ul>

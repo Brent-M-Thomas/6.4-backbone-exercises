@@ -33,7 +33,24 @@ var FormView = Backbone.View.extend({
   },
 });
 
-// var BookmarkListView = Backbone.View.extend({
+var BookmarkListView = Backbone.View.extend({
+  template: AppTemplates.listview,
 
-// });
+  el: '#links',
 
+  initialize: function() {
+    this.listenTo(this.collection, 'change', this.render);
+    this.render();
+  },
+
+  render: function() {
+    var _this = this;
+
+    this.collection.fetch().then(function() {
+      var html = _this.template(_this.collection.toJSON());
+      _this.$el.html(html);
+    });
+
+    return this;
+  },
+});
