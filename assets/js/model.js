@@ -12,7 +12,4 @@ var BookmarkList = Backbone.Collection.extend({
   url: 'http://tiny-lr.herokuapp.com/collections/bt-bookmarks',
 });
 
-var bookmark = new Bookmark();
-var bookmarkList = new BookmarkList();
-Backbone.history.start();
 

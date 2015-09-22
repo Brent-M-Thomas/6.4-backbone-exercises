@@ -4,8 +4,7 @@ var FormView = Backbone.View.extend({
   el: '#target',
 
   initialize: function() {
-    this.ListenTo(this.collection, 'add', this.render);
-    debugger;
+    this.listenTo(this.collection, 'add change sync', this.render);
     this.render();
   },
 
@@ -30,11 +29,12 @@ var FormView = Backbone.View.extend({
     var title = this.$el.find('input#title').val();
     var url = this.$el.find('input#url').val();
     var tag = this.$el.find('input#tag').val();
+    debugger;
     this.collection.create({title: title, url: url, tag: tag});
   },
 });
 
-var BookmarkView = Backbone.View.extend({
+// var BookmarkListView = Backbone.View.extend({
 
+// });
 
-});
