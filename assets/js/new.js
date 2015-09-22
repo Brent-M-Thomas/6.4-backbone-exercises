@@ -1,4 +1,4 @@
 var bookmarkList = new BookmarkList();
-var bookmark = new Bookmark({collection: BookmarkList});
-var formview = new FormView();
+var bookmark = new Bookmark({collection: bookmarkList});
+var formview = new FormView({collection: bookmarkList});
 Backbone.history.start();

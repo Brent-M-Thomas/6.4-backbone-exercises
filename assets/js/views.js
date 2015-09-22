@@ -29,7 +29,6 @@ var FormView = Backbone.View.extend({
     var title = this.$el.find('input#title').val();
     var url = this.$el.find('input#url').val();
     var tag = this.$el.find('input#tag').val();
-    debugger;
     this.collection.create({title: title, url: url, tag: tag});
   },
 });
