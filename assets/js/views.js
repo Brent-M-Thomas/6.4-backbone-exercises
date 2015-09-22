@@ -26,9 +26,9 @@ var CreateView = Backbone.View.extend({
 
   saveBlog: function(ev) {
     ev.preventDefault();
-    var title = this.$el.find('input#title').val();
-    var content = this.$el.find('input#content').val();
-    var author = this.$el.find('input#author').val();
+    var title = this.$el.find('input.title').val();
+    var content = this.$el.find('input.content').val();
+    var author = this.$el.find('input.author').val();
     this.collection.create({title: title, content: content, author: author});
   },
 });
@@ -70,6 +70,43 @@ var BlogView = Backbone.View.extend({
     this.$el.html(html);
 
     return this;
+  },
+});
+
+var EditView = Backbone.View.extend({
+  template: AppTemplates.edit,
+
+  initialize: function() {
+    this.render();
+  },
+
+  events: {
+    'click .save': 'saveChanges',
+    'click .destroy': 'destroyBlog',
+  },
+
+  render: function() {
+    var html = this.template(this.model.toJSON());
+    this.$el.html(html);
+    return this;
+
+  },
+
+  saveChanges: function(ev) {
+    ev.preventDefault();
+
+    var title = this.$el.find('.title').val();
+    var content = this.$el.find('.content').val();
+    var author = this.$el.find('.author').val();
+
+    this.model.save({title: title, content: content, author: author});
+  },
+
+  destroyBlog: function() {
+    ev.preventDefault();
+    this.model.destroy().then(function() {
+      router.navigate('', {trigger: true});
+    });
   },
 });
 
