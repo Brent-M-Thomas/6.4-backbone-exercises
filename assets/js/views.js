@@ -54,3 +54,34 @@ var BookmarkListView = Backbone.View.extend({
     return this;
   },
 });
+
+var TagView = Backbone.View.extend({
+  template: AppTemplates.tags,
+
+  el: '#tags',
+
+  initialize: function() {
+    this.listenTo(this.collection, 'change', this.render);
+    this.render();
+  },
+
+  render: function() {
+    var _this = this;
+
+    this.collection.fetch().then(function() {
+      var filteredList = _this.collection.reduce(function(prev, model) {
+        if (!_.findWhere(prev, {name: model.get('tag')})) {
+          prev.push({name: model.get('tag'), path: model.get('tag')});
+        }
+
+        return prev;
+      }, [{name: 'all', path: ''}]);
+
+      var html = _this.template(filteredList);
+
+      _this.$el.html(html);
+    });
+
+    return this;
+  },
+});
