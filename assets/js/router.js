@@ -1,7 +1,12 @@
 var Router = Backbone.Router.extend({
 
   initialize: function() {
+
+    var blogList = new BlogList();
     this.collection = new BlogList();
+    var blog = new Blog({collection: blogList});
+    var createView = new CreateView({collection: blogList});
+    var listView = new BlogListView({collection: blogList});
   },
 
   routes: {
@@ -14,7 +19,6 @@ var Router = Backbone.Router.extend({
 
     this.collection.fetch().then(function() {
       var view = new BlogView({model: _this.collection.get(id)});
-      debugger;
 
       $('#read').html(view.render().el);
     });

@@ -61,11 +61,11 @@ var BlogView = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.collection, 'add sync change', this.render);
-    debugger;
     this.render();
   },
 
   render: function() {
+    debugger;
     var html = this.template(this.model.toJSON());
     this.$el.html(html);
 

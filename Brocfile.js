@@ -15,7 +15,7 @@ var vendorJs = concat('bower_components', {
 
 var assetsWithTemplates = handlebars('assets', {
   srcDir: 'templates',
-  namespace: 'AppTemplates'
+  namespace: 'AppTemplates',
 });
 
 var appJs = concat(assetsWithTemplates, {
