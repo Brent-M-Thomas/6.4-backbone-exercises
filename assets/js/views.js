@@ -65,7 +65,6 @@ var BlogView = Backbone.View.extend({
   },
 
   render: function() {
-    debugger;
     var html = this.template(this.model.toJSON());
     this.$el.html(html);
 
@@ -102,7 +101,7 @@ var EditView = Backbone.View.extend({
     this.model.save({title: title, content: content, author: author});
   },
 
-  destroyBlog: function() {
+  destroyBlog: function(ev) {
     ev.preventDefault();
     this.model.destroy().then(function() {
       router.navigate('', {trigger: true});

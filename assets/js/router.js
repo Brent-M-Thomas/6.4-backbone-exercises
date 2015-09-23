@@ -19,8 +19,6 @@ var Router = Backbone.Router.extend({
 
     this.collection.fetch().then(function() {
       var view = new BlogView({model: _this.collection.get(id)});
-
-      $('#read').html(view.render().el);
     });
   },
 
@@ -31,7 +29,7 @@ var Router = Backbone.Router.extend({
       var model = _this.collection.get(id);
       var edit = new EditView({model: model});
 
-      $('#create').html(edit.render().el);
+      $('#edit').html(edit.render().el);
     });
   },
 });
