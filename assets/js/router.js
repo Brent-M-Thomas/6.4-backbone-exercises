@@ -29,7 +29,7 @@ var Router = Backbone.Router.extend({
       var model = _this.collection.get(id);
       var edit = new EditView({model: model});
 
-      $('#edit').html(edit.render().el);
+      $('#create').html(edit.render().el);
     });
   },
 });

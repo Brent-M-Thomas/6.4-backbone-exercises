@@ -39,18 +39,15 @@ var BlogListView = Backbone.View.extend({
   el: '#links',
 
   initialize: function() {
-    this.listenTo(this.collection, 'change', this.render);
+    this.listenTo(this.collection, ' add sync change', this.render);
+    this.collection.fetch();
     this.render();
   },
 
   render: function() {
     var _this = this;
-
-    this.collection.fetch().then(function() {
-      var html = _this.template(_this.collection.toJSON());
-      _this.$el.html(html);
-    });
-
+    var html = _this.template(_this.collection.toJSON());
+    _this.$el.html(html);
     return this;
   },
 });
@@ -87,6 +84,7 @@ var EditView = Backbone.View.extend({
   render: function() {
     var html = this.template(this.model.toJSON());
     this.$el.html(html);
+    this.$el.find('.create').slideDown();
     return this;
 
   },
@@ -98,7 +96,9 @@ var EditView = Backbone.View.extend({
     var content = this.$el.find('.content').val();
     var author = this.$el.find('.author').val();
 
-    this.model.save({title: title, content: content, author: author});
+    this.model.save({title: title, content: content, author: author}).then(function() {
+      router.navigate('', {trigger: true});
+    });
   },
 
   destroyBlog: function(ev) {
