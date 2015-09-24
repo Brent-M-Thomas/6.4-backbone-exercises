@@ -1,27 +1,20 @@
 var CreateView = Backbone.View.extend({
   template: AppTemplates.create,
 
-  el: '#create',
-
   initialize: function() {
     this.listenTo(this.collection, 'add change sync', this.render);
     this.render();
   },
 
   events: {
-    'click .new-blog': 'create',
     'submit form': 'saveBlog',
   },
 
   render: function() {
     var html = this.template();
     this.$el.html(html);
-    return this;
-  },
-
-  create: function() {
     this.$el.find('.create').slideDown();
-
+    return this;
   },
 
   saveBlog: function(ev) {
@@ -39,7 +32,7 @@ var BlogListView = Backbone.View.extend({
   el: '#links',
 
   initialize: function() {
-    this.listenTo(this.collection, ' add sync change', this.render);
+    this.listenTo(this.collection, 'add sync change', this.render);
     this.collection.fetch();
     this.render();
   },
@@ -96,9 +89,7 @@ var EditView = Backbone.View.extend({
     var content = this.$el.find('.content').val();
     var author = this.$el.find('.author').val();
 
-    this.model.save({title: title, content: content, author: author}).then(function() {
-      router.navigate('', {trigger: true});
-    });
+    this.model.save({title: title, content: content, author: author});
   },
 
   destroyBlog: function(ev) {

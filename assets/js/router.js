@@ -5,13 +5,20 @@ var Router = Backbone.Router.extend({
     var blogList = new BlogList();
     this.collection = new BlogList();
     var blog = new Blog({collection: blogList});
-    var createView = new CreateView({collection: blogList});
     var listView = new BlogListView({collection: blogList});
   },
 
   routes: {
+
+    'new': 'createView',
     ':id': 'read',
     ':id/edit': 'edit',
+  },
+
+  createView: function() {
+    var createView = new CreateView({collection: blogList});
+    $('#read').html(this.createView.render().el);
+
   },
 
   read: function(id) {
@@ -29,7 +36,7 @@ var Router = Backbone.Router.extend({
       var model = _this.collection.get(id);
       var edit = new EditView({model: model});
 
-      $('#create').html(edit.render().el);
+      $('#read').html(edit.render().el);
     });
   },
 });
