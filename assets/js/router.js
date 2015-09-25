@@ -2,22 +2,22 @@ var Router = Backbone.Router.extend({
 
   initialize: function() {
 
+    // var blog = new Blog({collection: blogList});
     var blogList = new BlogList();
     this.collection = new BlogList();
-    var blog = new Blog({collection: blogList});
     var listView = new BlogListView({collection: blogList});
   },
 
   routes: {
 
-    'new': 'createView',
+    '#new': 'createView',
     ':id': 'read',
     ':id/edit': 'edit',
   },
 
   createView: function() {
     var createView = new CreateView({collection: blogList});
-    $('#read').html(this.createView.render().el);
+    $('#read').html(createView.render().el);
 
   },
 
