@@ -17,7 +17,7 @@ var Router = Backbone.Router.extend({
 
   createView: function() {
     var createView = new CreateView({collection: blogList});
-    $('#read').html(createView.render().el);
+    $('#read').html(this.createView.render().el);
 
   },
 
